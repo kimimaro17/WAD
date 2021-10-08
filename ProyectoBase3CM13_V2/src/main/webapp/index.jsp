@@ -31,6 +31,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="TablasDeMultiplicar.jsp">Tabla de Multiplicar</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="categorias/listaDeCategorias.jsp">Listado de Categoria</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 27 sep 2021, 8:09:00
+    Document   : nuevaCategoria
+    Created on : 7 oct 2021, 7:23:48
     Author     : Kimi
 --%>
 
@@ -32,12 +32,35 @@
                                 <a class="nav-link" href="TablasDeMultiplicar.jsp">Tabla de Multiplicar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="categorias/listaDeCategorias.jsp">Listado de Categoria</a>
+                                <a class="nav-link" href="categorias/ListaDeCategorias.jsp">Listado de Categoria</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+        
+            <div class="mb-3"></div>
+            <div class="card border-success">
+                <div class="card-header">
+                    <h1 class="text-primary text-center">Datos de la Categoria</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="agregarCategoria.jsp">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de la Categoria</label>
+                            <input type="text" name="txtNombre" id="txtNombre"placeholder="Nombre Categoria"
+                                   required="required" maxlength="50" class="form-control" />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Descripcion de la Categoria</label>
+                            <input type="text" name="txtDescripcion" id="txtDescripcion"placeholder="Descripcion Categoria"
+                                   required="required" maxlength="50" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar Categoria</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>
