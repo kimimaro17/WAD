@@ -32,7 +32,7 @@ public class TablasDeMultiplicar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -46,19 +46,19 @@ public class TablasDeMultiplicar extends HttpServlet {
             out.println("<body>");
             out.println("<div class=\"container\">");
 
-            out.println("                            <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n"
+            out.println("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n"
                     + "                    <div class=\"container-fluid\">\n"
-                    + "                        <a class=\"navbar-brand\" href=\"#\">Demo</a>\n"
+                    + "                        <a class=\"navbar-brand\" href=\"#\">Gestión de Productos</a>\n"
                     + "                        <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n"
                     + "                            <span class=\"navbar-toggler-icon\"></span>\n"
                     + "                        </button>\n"
                     + "                        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n"
                     + "                            <ul class=\"navbar-nav\">\n"
                     + "                                <li class=\"nav-item\">\n"
-                    + "                                    <a class=\"nav-link active\" aria-current=\"page\" href=\"index.html\">Home</a>\n"
+                    + "                                    <a class=\"nav-link\" href=\"index.html\">Inicio</a>\n"
                     + "                                </li>\n"
                     + "                                <li class=\"nav-item\">\n"
-                    + "                                    <a class=\"nav-link\" href=\"TablasDeMultiplicar\">Tablas de Multiplicar</a>\n"
+                    + "                                    <a class=\"nav-link active\" aria-current=\"page\" href=\"TablasDeMultiplicar\">Tablas de Multiplicar</a>\n"
                     + "                                </li>\n"
                     + "                                <li class=\"nav-item\">\n"
                     + "                                    <a class=\"nav-link\" href=\"MostrarDatosCategoria\">Listado de Categorías</a>\n"
@@ -66,25 +66,20 @@ public class TablasDeMultiplicar extends HttpServlet {
                     + "                                <li class=\"nav-item\">\n"
                     + "                                    <a class=\"nav-link\" href=\"ProductoController?accion=listaDeProductos\">Listado de Productos</a>\n"
                     + "                                </li>\n"
-                    + "                                <li class=\"nav-item\">\n"
-                    + "                                    <a class=\"nav-link\" href=\"categoriaForm.html\">Nueva categoria</a>\n"
-                    + "                                </li>\n"
-                    + "                                <li class=\"nav-item\">\n"
-                    + "                                    <a class=\"nav-link\" href=\"productoForm.html\">Nuevo producto</a>\n"
-                    + "                                </li>\n"
                     + "                            </ul>\n"
                     + "                        </div>\n"
                     + "                    </div>\n"
-                    + "                </nav>");       
-            out.println("<h1> Tablas de multiplicar </h1>");
+                    + "                </nav>");
+            out.println("<h1>Tablas de Multiplicar</h1>");
             out.println("<table class=\"table table-bordered\">");
-            out.println("<table border='1'> ");
-            for (int i = 1; i <= 10; i++){
+            for (int i = 1; i <= 10; i++) {
                 out.println("<tr>");
-                for (int j = 1; j <= 10; j++){
+                for (int j = 1; j <= 10; j++) {
                     out.println("<td>" + (i * j) + "</td>");
+
                 }
                 out.println("</tr>");
+
             }
             out.println("</table>");
             out.print("</div>");

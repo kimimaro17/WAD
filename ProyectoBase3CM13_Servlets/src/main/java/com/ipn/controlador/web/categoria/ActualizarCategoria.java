@@ -49,6 +49,32 @@ public class ActualizarCategoria extends HttpServlet {
                     + "<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js\" crossorigin=\"anonymous\"></script>");
             out.println("</head>");
             out.println("<body>");
+            out.println("<div class=\"containerb\">\n"
+                    + "                <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n"
+                    + "                    <div class=\"container-fluid\">\n"
+                    + "                        <a class=\"navbar-brand\" href=\"#\">Gestión de Productos</a>\n"
+                    + "                        <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n"
+                    + "                            <span class=\"navbar-toggler-icon\"></span>\n"
+                    + "                        </button>\n"
+                    + "                        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n"
+                    + "                            <ul class=\"navbar-nav\">\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"index.html\">Inicio</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"TablasDeMultiplicar\">Tablas de Multiplicar</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link active\" aria-current=\"page\" href=\"MostrarDatosCategoria\">Listado de Categorías</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"ProductoController?accion=listaDeProductos\">Listado de Productos</a>\n"
+                    + "                                </li>\n"
+                    + "                            </ul>\n"
+                    + "                        </div>\n"
+                    + "                    </div>\n"
+                    + "                </nav>\n"
+                    + "            </div>");
 
             CategoriaDAO dao = new CategoriaDAO();
             CategoriaDTO dto = new CategoriaDTO();
@@ -60,10 +86,8 @@ public class ActualizarCategoria extends HttpServlet {
                 Logger.getLogger(ActualizarCategoria.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (dto != null) {
-                out.println("        <h1>Actualizacion de Categoría</h1>\n"
-                        + "        <div  class=\"text-left\">\n"
-                        + "            <br>\n"
-                        + "            <br>\n"
+                out.println("<div class=\"container\">        <h1>Actualizacion de Categoría</h1>\n"
+                        + "        <div class=\"text-left\">\n"
                         + "            <form name=\"frmUpdate\" method=\"post\" action=\"updateCategoria\">\n"
                         + "                ID:<br>\n"
                         + "                <select name=\"idxtx\" class=\"form-control form-control-lg\">\n"
@@ -71,18 +95,13 @@ public class ActualizarCategoria extends HttpServlet {
                         + "                </select>\n"
                         + "                <br>\n"
                         + "                Nuevo Nombre Categoría:<br>\n"
-                        + "                <input class=\"form-control\" type=\"text\" name=\"txtNombreu\" placeholder=\"Ingresa el nuevo nombre\" required/>\n"
+                        + "                <input class=\"form-control\" type=\"text\" name=\"txtNombreu\" placeholder=\"Ingresa el nuevo nombre\" value=" + dto.getEntidad().getNombreCategoria() + " required/>\n"
                         + "                <br>\n"
                         + "                Nueva Descripción:<br>\n"
-                        + "                <input class=\"form-control\" type=\"text\" name=\"txtDescripcionu\" placeholder=\"Ingresa la nueva descripción\" required/>\n"
-                        + "                <div class=\"text-center\">\n"
-                        + "                    <input class=\"btn btn-success\" type=\"submit\" value=\"Enviar\" name=\"btnEnviar\"/>\n"
-                        + "                    <br> \n"
-                        + "                    <br> \n"
-                        + "                    <a  class=\"btn btn-danger\" href=\"MostrarDatosCategoria\">Listado Categorías</a>\n"
-                        + "                </div>\n"
+                        + "                <input class=\"form-control\" type=\"text\" name=\"txtDescripcionu\" placeholder=\"Ingresa la nueva descripción\" value=" + dto.getEntidad().getDescripcionCategoria() + " required/><br>\n"
+                        + "                <input class=\"btn btn-primary\" type=\"submit\" value=\"Enviar\" name=\"btnEnviar\"/>\n"
                         + "            </form>\n"
-                        + "        </div>");
+                        + "        </div></div>");
                 //dto.getEntidad().getIdcategorria();
             }
 

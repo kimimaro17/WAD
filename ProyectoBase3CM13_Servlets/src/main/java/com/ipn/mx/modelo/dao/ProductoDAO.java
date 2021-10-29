@@ -167,7 +167,7 @@ public class ProductoDAO {
             p.getEntidad().setNombreProducto(rs.getString("nombreProducto"));
             p.getEntidad().setDescripcionProducto(rs.getString("descripcionProducto"));
             p.getEntidad().setExistencia(rs.getInt("existencia"));
-            //p.getEntidad().setPrecio(rs.getBigDecimal("precio"));
+            p.getEntidad().setPrecio(rs.getBigDecimal("precio"));
             p.getEntidad().setStockMinimo(rs.getInt("stockMinimo"));
             p.getEntidad().setClaveCategoria(rs.getInt("claveCategoria"));
             resultados.add(p);
@@ -183,9 +183,11 @@ public class ProductoDAO {
         dto.getEntidad().setExistencia(100);
         dto.getEntidad().setPrecio(new BigDecimal(1000));
         dto.getEntidad().setStockMinimo(10);
-        dto.getEntidad().setClaveCategoria(3);
+        dto.getEntidad().setClaveCategoria(1);
         try {
             dao.create(dto);
+            
+            dao.readAll();
         } catch (SQLException ex) {
             Logger.getLogger(ProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

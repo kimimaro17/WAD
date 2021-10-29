@@ -37,15 +37,20 @@ public class AgregarCategoria extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Agregar Categoria</title>");            
-            out.println("</head>");
+            out.println("<head>\n"
+                    + "        <title>Agregar categoria</title>\n"
+                    + "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
+                    + "        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" >\n"
+                    + "        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj\" crossorigin=\"anonymous\"></script>\n"
+                    + "        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js\" integrity=\"sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp\" crossorigin=\"anonymous\"></script>\n"
+                    + "        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js\" integrity=\"sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/\" crossorigin=\"anonymous\"></script>\n"
+                    + "    </head>");
             out.println("<body>");
-            
+
             String msg = "";
             CategoriaDAO dao = new CategoriaDAO();
             CategoriaDTO dto = new CategoriaDTO();
@@ -57,10 +62,9 @@ public class AgregarCategoria extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(AgregarCategoria.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
             out.println("<div align='center'>");
-            out.println("<b>" + msg + "</b>");
-            out.println("<a href='MostrarDatosCategoria'> Listado de Categorias</a>");
+            out.println("<b>" + msg + "</b><br>");
+            out.println("<a href='MostrarDatosCategoria' class='btn btn-primary'> Listado de Categorias</a>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
