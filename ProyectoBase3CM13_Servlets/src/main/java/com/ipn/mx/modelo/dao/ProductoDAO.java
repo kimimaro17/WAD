@@ -138,6 +138,7 @@ public class ProductoDAO {
         ResultSet rs = null;
         try {
             ps = conexion.prepareStatement(SQL_READ);
+            ps.setInt(1, dto.getEntidad().getIdProducto());
             rs = ps.executeQuery();
             List resultados = obtenerResultados(rs);
             if (resultados.size() > 0) {

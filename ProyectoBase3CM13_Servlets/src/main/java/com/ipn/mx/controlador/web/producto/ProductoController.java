@@ -359,42 +359,65 @@ public class ProductoController extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<div class=\"container\">");
-            out.println("<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n"
-                    + "                <div class=\"container-fluid\">\n"
-                    + "                    <a class=\"navbar-brand\" href=\"#\">Demo</a>\n"
-                    + "                    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n"
-                    + "                        <span class=\"navbar-toggler-icon\"></span>\n"
-                    + "                    </button>\n"
-                    + "                    <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n"
-                    + "                        <ul class=\"navbar-nav\">\n"
-                    + "                            <li class=\"nav-item\">\n"
-                    + "                                <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">Home</a>\n"
-                    + "                            </li>\n"
-                    + "                            <li class=\"nav-item\">\n"
-                    + "                                <a class=\"nav-link\" href=\"TablasDeMultiplicar\">Tablas de Multiplicar</a>\n"
-                    + "                            </li>\n"
-                    + "                            <li class=\"nav-item\">\n"
-                    + "                                <a class=\"nav-link\" href=\"MostrarDatosCategoria\">Listado de Categorias</a>\n"
-                    + "                            </li>\n"
-                    + "                            <li class=\"nav-item\">\n"
-                    + "                                <a class=\"nav-link\" href=\"categoriaForm.html\">Nuevo</a>\n"
-                    + "                            </li>\n"
-                    + "                        </ul>\n"
+            out.println("                 <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n"
+                    + "                    <div class=\"container-fluid\">\n"
+                    + "                        <a class=\"navbar-brand\" href=\"#\">Demo</a>\n"
+                    + "                        <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n"
+                    + "                            <span class=\"navbar-toggler-icon\"></span>\n"
+                    + "                        </button>\n"
+                    + "                        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n"
+                    + "                            <ul class=\"navbar-nav\">\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link active\" aria-current=\"page\" href=\"index.html\">Home</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"TablasDeMultiplicar\">Tablas de Multiplicar</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"MostrarDatosCategoria\">Listado de Categorías</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"ProductoController?accion=listaDeProductos\">Listado de Productos</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"categoriaForm.html\">Nueva categoria</a>\n"
+                    + "                                </li>\n"
+                    + "                                <li class=\"nav-item\">\n"
+                    + "                                    <a class=\"nav-link\" href=\"productoForm.html\">Nuevo producto</a>\n"
+                    + "                                </li>\n"
+                    + "                            </ul>\n"
+                    + "                        </div>\n"
                     + "                    </div>\n"
-                    + "                </div>\n"
-                    + "            </nav>");
-            out.println("<table class ='table table-striped'>");
+                    + "                </nav>");
+            
+            ProductoDAO dao = new ProductoDAO();
+            ProductoDTO dto = new ProductoDTO();
+            dto.getEntidad().setIdProducto(Integer.parseInt(request.getParameter("id")));
 
-            out.println("<tr><th>Clave del producto <td>"+1+"</td></th></tr>");
-            out.println("<tr><th>Nombre del producto <td>"+1+"</td></th></tr>");
-            out.println("<tr><th>Descripcion del producto <td>"+1+"</td></th></tr>");
-            out.println("<tr><th>Precio del producto <td>"+1+"</td></th></tr>");
-            out.println("<tr><th>Existencia del producto <td>"+1+"</td></th></tr>");
-            out.println("<tr><th>Stock</th></tr>");
-            out.println("<tr><th>Categoria</th></tr>");
-            out.println("</table>");
-            out.println("<a href='ProductoController?accion=listaDeProductos' class='btn btn-success'>Listado</a>");
-            out.println("</div>");
+            try {
+                dto = dao.read(dto);
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            if (dto != null) {
+                out.println("<table class ='table table-striped'>");
+                out.println("<tr><th>Clave del producto <td>" + dto.getEntidad().getIdProducto() + "</td></th></tr>");
+                out.println("<tr><th>Nombre del producto <td>" + dto.getEntidad().getNombreProducto() + "</td></th></tr>");
+                out.println("<tr><th>Descripcion del producto <td>" + dto.getEntidad().getDescripcionProducto() + "</td></th></tr>");
+                out.println("<tr><th>Precio del producto <td>" + dto.getEntidad().getPrecio() + "</td></th></tr>");
+                out.println("<tr><th>Existencia del producto <td>" + dto.getEntidad().getExistencia() + "</td></th></tr>");
+                out.println("<tr><th>Stock <td>" + dto.getEntidad().getStockMinimo() + "</td></th></tr>");
+                out.println("<tr><th>Categoria <td>" + dto.getEntidad().getClaveCategoria() + "</td></th></tr>");
+                out.println("</table>");
+                out.println("<a href='ProductoController?accion=listaDeProductos' class='btn btn-success'>Listado de Productos</a>");
+                out.println("</div>");
+            } else {
+                out.println("<div class='text-center'>");
+                out.println("<p>Vacio</p>");
+                out.println("<a href='ProductoController?accion=listaDeProductos' class='btn btn-primary'>Listado de Productos</a>");
+                out.println("</div>");
+            }
             out.println("</body>");
             out.println("</html>");
         }
