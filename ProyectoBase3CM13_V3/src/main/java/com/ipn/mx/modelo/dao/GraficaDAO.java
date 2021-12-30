@@ -24,7 +24,7 @@ public class GraficaDAO {
 
     private Connection conexion;
     private static final String SQL_GRAFICAR = 
-            "select nombreCategoria, count(*) as cantidad from Categoria inner join Producto on Categoria.idCategoria = Producto.clavecategoria group by Categoria.nombreCategoria;";
+            "select nombreCategoria, count(*) as cantidad from Categoria inner join Producto on Categoria.idCategoria = Producto.clavecategoria group by Categoria.nombreCategoria";
 
     private void conectar() {
         String user = "postgres";
